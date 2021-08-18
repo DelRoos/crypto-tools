@@ -1,0 +1,9 @@
+{
+    "auto_correction": true,
+    "alphabet_params": {
+        "alpha_lower": true,
+        "alpha_upper": false,
+        "numeric": false,
+        "punctuation": false
+    }
+}
