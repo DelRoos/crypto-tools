@@ -1,28 +1,29 @@
 import controllers.controller as global_config
-from package.classics.shift.cesar.cesar_class import Cesar
+from package.classics.substitution.vigenere_class import  Vigenere
 
 
 def encode_decode(text: str, keys: list, crypt: bool = True)-> list:
     general = {
-        "method": "Cesar", 
+        "method": "Vigenere", 
         "text": text, 
         "result": []
     }
 
-    cesar = Cesar(all_set=global_config.alphabet)
+    vigenere = Vigenere(all_set=global_config.alphabet)
     general['text'] = global_config.check_and_validate_text(text=general['text'])
+    keys = [ global_config.check_and_validate_text(text=key) for key in keys]
 
     if crypt:
         for key in keys:
             general["result"].append({
                 "key": key,
-                "text": cesar.crypt(text=general["text"], key=key)
+                "text": vigenere.crypt(text=general["text"], key=key)
             })
     else:
         for key in keys:
             general["result"].append({
                 "key": key,
-                "text": cesar.decrypt(crypt_text=general["text"], key=key)
+                "text": vigenere.decrypt(text=general["text"], key=key)
             })
 
     return general
