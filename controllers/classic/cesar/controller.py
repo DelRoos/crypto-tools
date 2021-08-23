@@ -13,12 +13,14 @@ def encode_decode(text: str, keys: list, crypt: bool = True)-> list:
     general['text'] = global_config.check_and_validate_text(text=general['text'])
 
     if crypt:
+        general['action'] = "Crypt"
         for key in keys:
             general["result"].append({
                 "key": key,
                 "text": cesar.crypt(text=general["text"], key=key)
             })
     else:
+        general['action'] = "Decrypt"
         for key in keys:
             general["result"].append({
                 "key": key,

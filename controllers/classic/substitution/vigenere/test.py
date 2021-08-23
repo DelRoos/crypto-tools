@@ -7,6 +7,7 @@ class VigenereTest(unittest.TestCase):
         self.assertEqual(
             vigenere.encode_decode(text="delanoroosvelttoungsiyoumbissi", keys=["cyndi", "loic"]),
             {
+                'action': 'Crypt',
                 'method': 'Vigenere', 
                 'text': 'delanoroosvelttoungsiyoumbissi', 
                 'result': [
@@ -26,6 +27,7 @@ class VigenereTest(unittest.TestCase):
         self.assertEqual(
             vigenere.encode_decode(text="fcydvqpbraxcywbqsajakwbxudgfvq", keys=["cyndi", "loic"], crypt=False),
             {
+                'action': 'Decrypt',
                 'method': 'Vigenere', 
                 'text': 'fcydvqpbraxcywbqsajakwbxudgfvq', 
                 'result': [

@@ -7,6 +7,7 @@ class CesarTest(unittest.TestCase):
         self.assertEqual(
             cesar.encode_decode(text="delano.", keys=[3,2]),
             {
+                'action': 'Crypt',
                 'method': 'Cesar', 
                 'text': 'delano', 
                 'result': [
@@ -26,6 +27,7 @@ class CesarTest(unittest.TestCase):
         self.assertEqual(
             cesar.encode_decode(text="ghodqr", keys=[3, 2], crypt=False),
             {
+                'action': 'Decrypt',
                 'method': 'Cesar', 
                 'text': 'ghodqr', 
                 'result': [

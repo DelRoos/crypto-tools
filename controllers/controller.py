@@ -1,7 +1,10 @@
 import json
 from utils.validators.validator_class import Validator
 from utils.sets.alphabet import SetAlphabet as Alphabet
+import os
+import shortuuid
 
+PATH_RESULT = "utils/result/classic"
 
 with open("/Users/user/Documents/Formation/Secu/tools/crypto_tools/config.json") as configuration :
     configs = json.load(configuration)
@@ -36,3 +39,14 @@ def check_and_validate_text(text: str, all_set: list=alphabet)-> str:
             raise("An error occurred")
     
     return text
+
+def print_to_json(results: dict):
+    if results['action'] == "Crypt":
+        file_name = "crypt_"+results["method"].lower()+"_"+shortuuid.ShortUUID().random(length=8)+".json"
+    else:
+        file_name = "decrypt_"+results["method"].lower()+"_"+shortuuid.ShortUUID().random(length=8)+".json"
+    
+    path_file = os.path.join(PATH_RESULT, file_name)
+    
+    with open(path_file, "w") as result_json :
+        json.dump(results, result_json, indent=2)
