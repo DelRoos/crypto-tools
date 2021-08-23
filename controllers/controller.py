@@ -50,3 +50,5 @@ def print_to_json(results: dict):
     
     with open(path_file, "w") as result_json :
         json.dump(results, result_json, indent=2)
+
+    return path_file
